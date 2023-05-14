@@ -5,6 +5,7 @@ interface User {
     username: string;
     password: string;
     mail: string;
+    phone: string;
     gender: 'male' | 'female' | 'others';
   }
   

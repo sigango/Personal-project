@@ -41,10 +41,10 @@ export default function NotFound404() {
             style={{
               color: 'Black',
               fontFamily: 'Roboto',
-              fontSize: '20px',
+              fontSize: '16px',
             }}
           >
-            But dont worry, you can find plenty of other things on our homepage.
+            But don't worry, you can find plenty of other things on our homepage.
           </p>
 
           <button

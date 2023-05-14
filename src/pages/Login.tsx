@@ -15,40 +15,40 @@ const Login = () => {
 
   let navigate = useNavigate();
 
-  useEffect(() => {
-    checkLogin();
-  }, []);
+  // useEffect(() => {
+  //   checkLogin();
+  // }, []);
 
-  useEffect(() => {
-    return () => {
-      document.body.style.overflow = 'scroll';
-    };
-  });
+  // useEffect(() => {
+  //   return () => {
+  //     document.body.style.overflow = 'scroll';
+  //   };
+  // });
 
-  const routeChange = async (path: string) => {
-    const role = await roleFunc.getRole().then((res) => {
-      navigate(`/${res}/${path}`);
-    });
-  };
+  // const routeChange = async (path: string) => {
+  //   const role = await roleFunc.getRole().then((res) => {
+  //     navigate(`/${res}/${path}`);
+  //   });
+  // };
 
-  const checkLogin = async () => {
-    let data = await authApi.getId();
-    if (data !== null && data !== 0) {
-      routeChange('dashboard');
-    }
-  };
+  // const checkLogin = async () => {
+  //   let data = await authApi.getId();
+  //   if (data !== null && data !== 0) {
+  //     routeChange('dashboard');
+  //   }
+  // };
 
-  const handleLogin = () => {
-    let data = authApi.login({ username, password }).then((res) => {
-      if (res.id !== 0) {
-        routeChange('dashboard');
-      } else {
-        alert('Invalid username or password');
-      }
-      return res;
-    });
-    return data;
-  };
+  // const handleLogin = () => {
+  //   let data = authApi.login({ username, password }).then((res) => {
+  //     if (res.id !== 0) {
+  //       routeChange('dashboard');
+  //     } else {
+  //       alert('Invalid username or password');
+  //     }
+  //     return res;
+  //   });
+  //   return data;
+  // };
 
   return (
     <div>

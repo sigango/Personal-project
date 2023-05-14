@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GuardEC } from '../models/Guard';
 import { AdminEC, UserEC } from '../models/Guard';
-// import { Register } from '../pages/Register';
+import { Register } from '../pages/Register';
 import { LoginLayout } from '../pages/LoginLayout';
 import NotFound404 from '../pages/NotFound404';
 import Login from '../pages/Login';
@@ -25,7 +25,7 @@ export default function AppRoute() {
           <Route element={<LoginLayout />}>
             {/* <Route path="/" element={<Landingpage />} /> */}
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/register" element={<Register />} /> */}
+            <Route path="/register" element={<Register />} />
           </Route>
   
           {/* 404 Not Found */}

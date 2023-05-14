@@ -14,6 +14,7 @@ export const authApi = {
     username: string;
     password: string;
     gender: string;
+    phone: string;
     mail: string;
   }) => {
     const payload = parameter;

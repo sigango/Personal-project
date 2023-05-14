@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import './App.scss';
-import './configs/antd/customized.scss';
+import './configs/antd/customized.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer } from 'react-toastify';
-import Login from './pages/Login';
 
-//import AppRoute from './routes/routes';
+import AppRoute from './routes/routes';
 
 function App() {
   return (
@@ -21,8 +20,7 @@ function App() {
         pauseOnFocusLoss
         draggable
       />
-      <Login />
-      {/* <AppRoute /> */}
+      <AppRoute />
 
     </>
   );
