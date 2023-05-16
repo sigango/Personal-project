@@ -1,16 +1,28 @@
 import { Card, Form, Button } from 'antd';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../assets/css/GroupCard.module.css';
-import { Navigate, useNavigate } from 'react-router-dom';
-import { Meal } from '../models/Meal';
+import { Drink } from '../models/Drink';
+import { Order } from '../models/Order';
 const { Meta } = Card;
 
-const GroupCard: React.FC<Meal> = ({ id, mealName, info, price }) => {
-  const navigate = useNavigate();
+const FoodCard: React.FC<Drink> = ({ id, drinkName, info, price }) => {
+  const [order, setOrder] = useState<Order | null>(null);
 
-  const handleClick = () => {
-    navigate(`${id}/home`);
-  };
+  const handleClick = (drink: Drink) => {
+    setOrder((prevOrder) => {
+      if (prevOrder) {
+        return {
+          ...prevOrder,
+          drinkItems: [...prevOrder.drinkItems, drink],
+        };
+      } else {
+        return {
+          foodItems: [],
+          drinkItems: [drink],
+        };
+      }
+    });
+  }
 
   return (
     <Form>
@@ -32,7 +44,7 @@ const GroupCard: React.FC<Meal> = ({ id, mealName, info, price }) => {
       >
         <div className={styles.wrapper}>
           <Meta
-            title={mealName}
+            title={drinkName}
             description={price}
             className={styles.content}
             style={{ textAlign: 'center' }}
@@ -50,4 +62,4 @@ const GroupCard: React.FC<Meal> = ({ id, mealName, info, price }) => {
   );
 };
 
-export default GroupCard;
+export default FoodCard;

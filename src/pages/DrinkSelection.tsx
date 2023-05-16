@@ -1,27 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import GroupCard from '../components/GroupCard';
+import DrinkCard from '../components/DrinkCard';
 import { Row, Divider } from 'antd';
-import { Meal } from '../models/Meal';
-// import { classApi } from '../api/classApi';
-// import { userApi } from '../api/userApi';
+import { Drink } from '../models/Drink';
+import { drinkApi } from '../api/drinkApi';
 import { authApi } from '../api/authApi';
 import { useNavigate } from 'react-router-dom';
 
 function DrinkSelection() {
-  const [data, setData] = React.useState<Meal[]>([] as Meal[]);
+  const [data, setData] = React.useState<Drink[]>([] as Drink[]);
 
   const getDrinks = async () => {
-    const id = (await authApi.getId()) as number;
-    const allDrinks = (await mealApi.getAll()) as Meal[];
+    const allDrinks = (await drinkApi.getAllDrinks()) as Drink[];
   };
 
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate('/.');
-    };
+    navigate(-1)
+  };
+
   const handleNext = () => {
-    navigate('/Drinks');
+    navigate('/confirm');
     };
 
   return (
@@ -58,7 +57,7 @@ function DrinkSelection() {
           color: '#8172d5',
         }}
       >
-        Choose the Food
+        STEP 2: Choose the Drink
       </Divider>
 
       <Row
@@ -78,9 +77,9 @@ function DrinkSelection() {
                   borderRadius: '20px',
                 }}
               >
-                <GroupCard
+                <DrinkCard
                   id={item.id}
-                  mealName={item.mealName}
+                  drinkName={item.drinkName}
                   info={item.info}
                   price={item.price}
                 />
