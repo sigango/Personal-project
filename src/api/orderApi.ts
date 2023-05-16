@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Order } from "../models/Order";
+import { stringify } from 'querystring';
 
 const initialOrder: Order = {
-    id: 0,
-    userName: "",
-    food: [],
-    drink: [],
+    foodItems: [],
+    drinkItems: [],
 };
 
 export const useFoodOrder = () => {
@@ -15,7 +14,7 @@ export const useFoodOrder = () => {
     const removeFood = (foodId: number) => {
       setOrder((prevOrder) => ({
         ...prevOrder,
-        food: prevOrder.food.filter((f) => f.id !== foodId),
+        food: prevOrder.foodItems.filter((f) => f.id !== foodId),
       }));
     };
   
@@ -23,17 +22,17 @@ export const useFoodOrder = () => {
     const removeDrink = (drinkId: number) => {
       setOrder((prevOrder) => ({
         ...prevOrder,
-        drink: prevOrder.drink.filter((d) => d.id !== drinkId),
+        drink: prevOrder.drinkItems.filter((d) => d.id !== drinkId),
       }));
     };
   
     // Calculate the total price of the order
     const getTotalPrice = (): number => {
-      const foodTotal = order.food.reduce(
+      const foodTotal = order.foodItems.reduce(
         (acc, f) => acc + f.price,
         0
       );
-      const drinkTotal = order.drink.reduce(
+      const drinkTotal = order.drinkItems.reduce(
         (acc, d) => acc + d.price,
         0
       );
