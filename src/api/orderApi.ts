@@ -11,20 +11,20 @@ export const useFoodOrder = () => {
     const [order, setOrder] = useState<Order>(initialOrder);
   
     // Remove a food item from the order packet
-    const removeFood = (foodId: number) => {
-      setOrder((prevOrder) => ({
-        ...prevOrder,
-        food: prevOrder.foodItems.filter((f) => f.id !== foodId),
-      }));
-    };
+    // const removeFood = (foodId: number) => {
+    //   setOrder((prevOrder) => ({
+    //     ...prevOrder,
+    //     food: prevOrder.foodItems.filter((f) => f.id !== foodId),
+    //   }));
+    // };
   
-    // Remove a drink item from the order packet
-    const removeDrink = (drinkId: number) => {
-      setOrder((prevOrder) => ({
-        ...prevOrder,
-        drink: prevOrder.drinkItems.filter((d) => d.id !== drinkId),
-      }));
-    };
+    // // Remove a drink item from the order packet
+    // const removeDrink = (drinkId: number) => {
+    //   setOrder((prevOrder) => ({
+    //     ...prevOrder,
+    //     drink: prevOrder.drinkItems.filter((d) => d.id !== drinkId),
+    //   }));
+    // };
   
     // Calculate the total price of the order
     const getTotalPrice = (): number => {
