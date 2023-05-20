@@ -34,14 +34,14 @@ const Login = () => {
   // const checkLogin = async () => {
   //   let data = await authApi.getId();
   //   if (data !== null && data !== 0) {
-  //     routeChange('dashboard');
+  //     routeChange('foodselection');
   //   }
   // };
 
   // const handleLogin = () => {
   //   let data = authApi.login({ username, password }).then((res) => {
   //     if (res.id !== 0) {
-  //       routeChange('dashboard');
+  //       routeChange('foodselection');
   //     } else {
   //       alert('Invalid username or password');
   //     }
@@ -156,7 +156,7 @@ const Login = () => {
           <Form.Item>
             <button
               className="login__create login__button"
-              //onClick={() => navigate('temp')}
+              onClick={() => navigate('../register')}
               style={{
                 width: '100%',
                 height: '40px',
@@ -167,7 +167,7 @@ const Login = () => {
                 lineHeight: '14px',
               }}
             >
-              TEMPORARY ACCOUNT
+              Register
             </button>
           </Form.Item>
         </Form>

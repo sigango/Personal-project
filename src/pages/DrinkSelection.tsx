@@ -27,7 +27,7 @@ function DrinkSelection() {
     <div
       style={{
         backgroundColor: '#fff',
-        width: '60%',
+        width: '70%',
       }}
     >
     <Row
@@ -52,9 +52,10 @@ function DrinkSelection() {
       <Divider
         orientation="center"
         style={{
-          fontSize: '56px',
+          fontSize: '40px',
           fontFamily: 'Roboto',
-          color: '#8172d5',
+          fontWeight: 'bold',
+          color: '#fb7f4b',
         }}
       >
         STEP 2: Choose the Drink

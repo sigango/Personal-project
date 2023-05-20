@@ -1,20 +1,20 @@
 import React from 'react';
 import 'tailwindcss/tailwind.css';
 import { useNavigate } from 'react-router-dom';
-
+import hamburger from '../assets/images/hamburger.svg';
 
 const LandingPage: React.FC = () => {
     const navigate = useNavigate();
     const handleSignin = () => {
-        navigate('/signin');
+        navigate('/login');
         };
     const handleSignup = () => {
-        navigate('/signup');
+        navigate('/register');
         };
     
   return (
     <div className="flex flex-row h-screen">
-      <div className="w-1/2 bg-gray-100 flex flex-col justify-center items-center">
+      <div className="w-1/2 flex flex-col justify-center items-center">
         <h1 className="text-5xl font-bold mb-4">Order Your Favorite Food</h1>
         <p className="text-xl text-gray-600 mb-8">Fast and easy receive in our store</p>
         <div className="flex flex-row">
@@ -34,7 +34,7 @@ const LandingPage: React.FC = () => {
       </div>
 
       <div className="w-1/2 flex justify-center items-center">
-        <img src="../image/hambuger.png" alt="Hamburger" className="object-contain max-h-full" />
+        <img src={hamburger} alt="Hamburger" className="object-contain max-h-full" />
       </div>
     </div>
   );

@@ -1,15 +1,14 @@
 import { Layout, Menu, Dropdown } from 'antd';
-import React, { Children } from 'react';
-import logo from '../../assets/images/logo.svg';
+import React from 'react';
+import logo from '../assets/images/logo.svg';
 import { Outlet, useNavigate } from 'react-router-dom';
 import {
-  HomeOutlined,
   AppstoreOutlined,
   UserOutlined,
   DownOutlined,
   LogoutOutlined,
 } from '@ant-design/icons';
-import '../../App.scss';
+import '../App.scss';
 
 import { authApi } from '../api/authApi';
 const { Content, Header } = Layout;
@@ -29,7 +28,7 @@ const UserLayout = () => {
 
   const defaultSelectedKeys = () => {
     let pathname = window.location.pathname;
-    if (pathname === 'classroom') {
+    if (pathname === 'order') {
       return ['2'];
     } else {
       return ['1'];
@@ -74,7 +73,7 @@ const UserLayout = () => {
             <Menu.Item key="2" onClick={() => navigate('classroom')}>
               <div className="flex justify-center items-center">
                 <AppstoreOutlined className="mr-2" />
-                Class
+                Order
               </div>
             </Menu.Item>
 

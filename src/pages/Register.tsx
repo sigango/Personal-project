@@ -166,7 +166,7 @@ export const Register = () => {
                 lineHeight: '14px',
               }}
             >
-              SIGN IN
+              Sign in
             </button>
           </Form.Item>
         </Form>

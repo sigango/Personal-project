@@ -2,6 +2,7 @@ import React from 'react';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { GuardEC } from '../models/Guard';
+import Guard from '../guards/AuthGuard';
 import { AdminEC, UserEC } from '../models/Guard';
 import { Register } from '../pages/Register';
 import { LoginLayout } from '../pages/LoginLayout';
@@ -10,7 +11,7 @@ import Login from '../pages/Login';
 import Landingpage from '../pages/Landingpage';
 import FoodSelection from '../pages/FoodSelection';
 import DrinkSelection from '../pages/DrinkSelection';
-import OrderConfirmation from '../pages/Confirmation';
+// import OrderConfirmation from '../pages/Confirmation';
 import UserLayout from '../pages/UserLayout';
 
 export default function AppRoute() {
@@ -32,22 +33,23 @@ export default function AppRoute() {
             <Route path="/register" element={<Register />} />
           </Route>
 
-        {/* student routes */}
-          {/* <Route path="/student/*" element={<Guard {...StudentGuard} />}> */}
-              <Route path=":id/*">
+        {/* user routes */}
+          {/* <Route path="/user/*" element={<Guard {...UserGuard} />}> */}
+              {/* <Route path="/:id/*"> */}
                 <Route element={<UserLayout />}>
-                <Route path="/foodselection" element={<FoodSelection />} />
-                  <Route path="/drinkselection" element={<DrinkSelection />} />
+                <Route path="foodselection/" element={<FoodSelection />} />
+                  <Route path="drinkselection/" element={<DrinkSelection />} />
                     {/* <Route path="/confirmation" element={<OrderConfirmation />} /> */}
                 </Route>
-              </Route>
+              {/* </Route> */}
+          {/* </Route> */}
 
           {/* admin routes */}  
           {/* <Route path="/admin/*" element={<Guard {...AdminGuard} />}> */}
               {/* <Route path=":id/*"> */}
                 {/* <Route element={<AdminLayout />}> */}
                   {/* <Route path="/admin" element={<Admin />} /> */}
-                  {/* <Route path="/admin/OrderDetails" element={<OrderDetails />} /> */}
+                  {/* <Route path="/OrderDetails" element={<OrderDetails />} /> */}
                   
           {/* 404 Not Found */}
           <Route path="*" element={<NotFound404 />} />

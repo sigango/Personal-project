@@ -48,7 +48,8 @@ function FoodSelection() {
         style={{
           fontSize: '56px',
           fontFamily: 'Roboto',
-          color: '#8172d5',
+          fontWeight: 'bold',
+          color: '#fb7f4b',
         }}
       >
        STEP 1: Choose the Food

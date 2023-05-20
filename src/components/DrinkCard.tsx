@@ -52,10 +52,11 @@ const FoodCard: React.FC<Drink> = ({ id, drinkName, info, price }) => {
           <Button
             className={styles.btn}
             style={{ alignItems: 'center' }}
-            onClick={() => handleClick()}
+            onClick={() => handleClick({ id, drinkName, info, price })}
           >
             Add to Packet
           </Button>
+
         </div>
       </Card>
     </Form>
