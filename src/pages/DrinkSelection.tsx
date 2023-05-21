@@ -20,7 +20,7 @@ function DrinkSelection() {
   };
 
   const handleNext = () => {
-    navigate('/confirm');
+    navigate('/confirmation');
     };
 
   return (

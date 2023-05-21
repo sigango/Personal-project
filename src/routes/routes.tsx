@@ -11,7 +11,7 @@ import Login from '../pages/Login';
 import Landingpage from '../pages/Landingpage';
 import FoodSelection from '../pages/FoodSelection';
 import DrinkSelection from '../pages/DrinkSelection';
-// import OrderConfirmation from '../pages/Confirmation';
+import Confirmation from '../pages/Confirmation';
 import UserLayout from '../pages/UserLayout';
 
 export default function AppRoute() {
@@ -39,7 +39,7 @@ export default function AppRoute() {
                 <Route element={<UserLayout />}>
                 <Route path="foodselection/" element={<FoodSelection />} />
                   <Route path="drinkselection/" element={<DrinkSelection />} />
-                    {/* <Route path="/confirmation" element={<OrderConfirmation />} /> */}
+                  <Route path="confirmation/" element={<Confirmation />} />
                 </Route>
               {/* </Route> */}
           {/* </Route> */}

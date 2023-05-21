@@ -1,14 +1,24 @@
 import { useState } from "react";
 import { Order } from "../models/Order";
+import { AppError } from "../models/Error";
 import { stringify } from 'querystring';
+import { useMutation, useQuery } from "react-query";
+
+const BASE_API = process.env.REACT_APP_BASE_API || 'http://localhost:8080';
+const apiUrl = `${BASE_API}/api/v1/order`;
 
 const initialOrder: Order = {
     foodItems: [],
     drinkItems: [],
 };
 
-export const useFoodOrder = () => {
-    const [order, setOrder] = useState<Order>(initialOrder);
+function setOrder(initialOrder: Order) {
+  throw new Error("Function not implemented.");
+}
+
+export const OrderApi = {
+  order: initialOrder,
+    // const [order, setOrder] = useState<Order>(initialOrder);
   
     // Remove a food item from the order packet
     // const removeFood = (foodId: number) => {
@@ -18,7 +28,7 @@ export const useFoodOrder = () => {
     //   }));
     // };
   
-    // // Remove a drink item from the order packet
+    // Remove a drink item from the order packet
     // const removeDrink = (drinkId: number) => {
     //   setOrder((prevOrder) => ({
     //     ...prevOrder,
@@ -26,27 +36,70 @@ export const useFoodOrder = () => {
     //   }));
     // };
   
-    // Calculate the total price of the order
-    const getTotalPrice = (): number => {
-      const foodTotal = order.foodItems.reduce(
-        (acc, f) => acc + f.price,
-        0
-      );
-      const drinkTotal = order.drinkItems.reduce(
-        (acc, d) => acc + d.price,
-        0
-      );
-      return foodTotal + drinkTotal;
-    };
-  
     // Get the current state of the order
-    const getOrder = (): Order => order;
+    // const getOrder = (): Order => order;
   
+    getAllOrder: async () => {
+      const response = await fetch(`${apiUrl}/`, {
+        method: 'GET',
+        credentials: 'include',
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+  
+          throw new Error('Network response was not ok.');
+        })
+        .then((data) => {
+          console.log(data);
+          const err: AppError = data.error;
+          if (err.errorCode !== 0) {
+            throw new Error(err.errorMsg + ' ++ ' + err.errorField);
+          }
+  
+          const orders: Order[] = data.data;
+          return orders;
+        })
+        .catch((err) => {
+          return err;
+        });
+  
+      return response;
+    },
+    
+    getOrderById: async (id: number) => {
+      const response = await fetch(
+        `${apiUrl}/?` + new URLSearchParams({ order_id: id.toString() }),
+        {
+          method: 'GET',
+        }
+      )
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+  
+          throw new Error('Network response was not ok.');
+        })
+        .then((data) => {
+          const err: AppError = data.error;
+          if (err.errorCode !== 0) {
+            throw new Error(err.errorMsg + ' ++ ' + err.errorField);
+          }
+  
+          const orders: Order[] = data.data;
+          return orders;
+        })
+  
+      return response;
+    },
+    
     // Confirm and place the order
     confirmOrder : async () => {
-      const json = JSON.stringify(order);
+      const json = JSON.stringify(OrderApi.order);
       try {
-        const response = await fetch("/api/order", {
+        const response = await fetch(`${apiUrl}/confirm`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -60,5 +113,17 @@ export const useFoodOrder = () => {
       } catch (err) {
         console.error(err);
       }
-    };
+    },
 };
+
+export const useGetOrderByID = (orderId: number) => {
+  const api = async () => {
+    const result = await OrderApi.getOrderById(orderId).then((res) => {
+      return res;
+    });
+
+    return result;
+  }
+
+  return useQuery(["GetOrderByID", orderId], api);
+}

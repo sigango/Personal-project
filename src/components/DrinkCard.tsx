@@ -2,6 +2,7 @@ import { Card, Form, Button } from 'antd';
 import React, { useState, useEffect } from 'react';
 import styles from '../assets/css/GroupCard.module.css';
 import { Drink } from '../models/Drink';
+import { Food } from '../models/Food';
 import { Order } from '../models/Order';
 const { Meta } = Card;
 
